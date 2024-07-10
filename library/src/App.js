@@ -1,7 +1,14 @@
 import './App.css';
-import Header from './Header.js';
-import Footer from './Footer.js';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import Contact from './Contact.js';
+import About from './About';
+import Home from './Home';
 import Main from './Main.js';
+import Signup from './Signup.js';
+import React from 'react';
+
+
+
 
 
 function App() {
@@ -70,11 +77,57 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Main books={books} />
-      <Footer />
+     
+
+<Router>
+      <div>
+      <nav  className="topnav">
+        <ul>
+          <li>
+            <Link to="/Main">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/Contact">Contact</Link>
+          </li>
+         <li>
+          <Link to="/Signup"> <button onClick="handleChange()">Sign up</button></Link>
+         
+         </li>
+          
+        </ul>
+      </nav>
+
+      <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
+         <Route path="/contact">
+          <Contact />
+          
+        </Route>
+        <Route path="/signup">
+          <Signup />
+          
+        </Route>
+        <Route path="/Main">
+        
+        <Main books={books} />
+        </Route>
+  
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </div>
+  </Router>
+  
     </div>
   );
 }
 
 export default App;
+
+

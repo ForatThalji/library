@@ -1,3 +1,4 @@
+import './App.css';
 function Main(props) {
     const { books } = props;
   
